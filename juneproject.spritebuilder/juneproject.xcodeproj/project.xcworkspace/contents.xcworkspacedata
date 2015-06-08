@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../Source/CCPhysicsTouchNode.h">
+   </FileRef>
+   <FileRef
+      location = "group:../Source/CCPhysicsTouchNode.m">
+   </FileRef>
+   <FileRef
       location = "group:../Source/MainScene.h">
    </FileRef>
    <FileRef

@@ -7,6 +7,8 @@
 //
 
 #import "FlickOffScreen.h"
+#import "CCPhysics+ObjectiveChipmunk.h"
+
 
 @implementation FlickOffScreen {
     CCPhysicsNode *_physicsNode;

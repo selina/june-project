@@ -9,6 +9,5 @@
 #import "CCNode.h"
 
 @interface SortGameplay : CCNode <CCPhysicsCollisionDelegate>
-@property (nonatomic, assign) int score;
 
 @end

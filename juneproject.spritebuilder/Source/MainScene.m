@@ -2,7 +2,7 @@
 //  MainScene.m
 //  
 //
-//  Created by Selina Wang on 6/7/15.
+//  Created by Selina Wang on 6/8/15.
 //
 //
 
@@ -11,7 +11,7 @@
 @implementation MainScene
 
 -(void)play {
-    CCScene *mainScene = [CCBReader loadAsScene:@"FallingBallGameplay"];
+    CCScene *mainScene = [CCBReader loadAsScene:@"FlickOffScreen"];
     [[CCDirector sharedDirector] replaceScene:mainScene];
 }
 

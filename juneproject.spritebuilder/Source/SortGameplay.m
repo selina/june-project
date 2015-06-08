@@ -8,6 +8,7 @@
 
 #import "SortGameplay.h"
 #import "CCPhysics+ObjectiveChipmunk.h"
+#define CP_ALLOW_PRIVATE_ACCESS 1
 
 
 @implementation SortGameplay {
