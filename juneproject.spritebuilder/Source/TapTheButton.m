@@ -25,8 +25,9 @@
 -(void)didLoadFromCCB {
     self.userInteractionEnabled = true;
     count = 0;
-    }
+}
 
+//some REALLY DUMB code i'm sorry i'm pressed for time
 -(void)buttonPressed {
     if (count == 0) {
         _label1.visible = NO;

@@ -8,6 +8,17 @@
 
 #import "FlickOffScreen.h"
 
-@implementation FlickOffScreen
+@implementation FlickOffScreen {
+    CCPhysicsNode *_physicsNode;
+    CCNode *_contentNode;
+}
+
+-(void)didLoadFromCCB {
+    self.userInteractionEnabled = true;
+    
+}
+
+
+
 
 @end

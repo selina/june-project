@@ -15,6 +15,7 @@
 		6A490D961B24103900DDC8CA /* FlickOffScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A490D951B24103900DDC8CA /* FlickOffScreen.m */; };
 		6A490D991B24108C00DDC8CA /* TapTheButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A490D981B24108C00DDC8CA /* TapTheButton.m */; };
 		6A490DA21B24AB5700DDC8CA /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A490DA11B24AB5700DDC8CA /* MainScene.m */; };
+		6A490DB51B263AF900DDC8CA /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A490DB41B263AF900DDC8CA /* GameOver.m */; };
 		7A40360419DDEE84007B6E8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40360319DDEE84007B6E8F /* main.m */; };
 		7A4036EB19DE3F8E007B6E8F /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8392007918EE8E3300B6C429 /* GLKit.framework */; };
 		7A4036EC19DE3F90007B6E8F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3117B978D7009739AE /* QuartzCore.framework */; };
@@ -174,6 +175,8 @@
 		6A490D981B24108C00DDC8CA /* TapTheButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TapTheButton.m; path = Source/TapTheButton.m; sourceTree = "<group>"; };
 		6A490DA01B24AB5700DDC8CA /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = Source/MainScene.h; sourceTree = "<group>"; };
 		6A490DA11B24AB5700DDC8CA /* MainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainScene.m; path = Source/MainScene.m; sourceTree = "<group>"; };
+		6A490DB31B263AF900DDC8CA /* GameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameOver.h; path = Source/GameOver.h; sourceTree = "<group>"; };
+		6A490DB41B263AF900DDC8CA /* GameOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameOver.m; path = Source/GameOver.m; sourceTree = "<group>"; };
 		7A4035FF19DDEE84007B6E8F /* juneproject Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "juneproject Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A40360219DDEE84007B6E8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Platforms/Mac/Info.plist; sourceTree = "<group>"; };
 		7A40360319DDEE84007B6E8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Source/Platforms/Mac/main.m; sourceTree = "<group>"; };
@@ -461,6 +464,8 @@
 				6A490D921B240FB200DDC8CA /* SortGameplay.m */,
 				6A490D841B23B38E00DDC8CA /* CCPhysicsTouchNode.h */,
 				6A490D851B23B38E00DDC8CA /* CCPhysicsTouchNode.m */,
+				6A490DB31B263AF900DDC8CA /* GameOver.h */,
+				6A490DB41B263AF900DDC8CA /* GameOver.m */,
 				D352B48019EC608A00829775 /* MetalShaders */,
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 			);
@@ -840,6 +845,7 @@
 				6A490D931B240FB200DDC8CA /* SortGameplay.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				6A490D7F1B20AB8400DDC8CA /* FallingBallGameplay.m in Sources */,
+				6A490DB51B263AF900DDC8CA /* GameOver.m in Sources */,
 				5B121038197487F2004C1E1D /* AppDelegate.m in Sources */,
 				6A490DA21B24AB5700DDC8CA /* MainScene.m in Sources */,
 				6A490D991B24108C00DDC8CA /* TapTheButton.m in Sources */,
