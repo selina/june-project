@@ -27,24 +27,24 @@
 	[super onEnter];
 }
 
--(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
-{
-	[_grab beginLocation:[touch locationInNode:self]];
-}
-
--(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event
-{
-	[_grab updateLocation:[touch locationInNode:self]];
-}
-
--(void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
-{
-	[_grab endLocation:[touch locationInNode:self]];
-}
-
--(void)touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
-{
-	[self touchEnded:touch withEvent:event];
-}
+//-(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//	[_grab beginLocation:[touch locationInNode:self]];
+//}
+//
+//-(void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//	[_grab updateLocation:[touch locationInNode:self]];
+//}
+//
+//-(void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//	[_grab endLocation:[touch locationInNode:self]];
+//}
+//
+//-(void)touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//	[self touchEnded:touch withEvent:event];
+//}
 
 @end

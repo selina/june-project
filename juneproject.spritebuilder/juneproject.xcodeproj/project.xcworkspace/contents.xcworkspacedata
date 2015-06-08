@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../Source/MainScene.h">
+   </FileRef>
+   <FileRef
+      location = "group:../Source/MainScene.m">
+   </FileRef>
+   <FileRef
       location = "self:juneproject.xcodeproj">
    </FileRef>
 </Workspace>
