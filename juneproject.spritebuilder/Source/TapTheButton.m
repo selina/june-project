@@ -61,7 +61,6 @@
         _label8.visible = NO;
         _continueButton.visible = YES;
     }
-        
     
     count += 1;
 

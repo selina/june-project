@@ -8,6 +8,7 @@
 
 #import "SortGameplay.h"
 #import "CCPhysics+ObjectiveChipmunk.h"
+#import "GameOver.h"
 
 @implementation SortGameplay {
     CCPhysicsNode *_physicsNode;
@@ -18,9 +19,14 @@
     int _score;
     int livesLeft;
     
+    CCLabelTTF *_youLost;
+    CCButton *_gameOver;
+    CCLabelTTF *_scoreLabel;
+    
     float timeSinceBall;
     float randomTimeUntilNextBall;
     int velocityThreshold;
+    float margin;
 }
 
 -(void)didLoadFromCCB {
@@ -36,8 +42,13 @@
     timeSinceBall = 0.0;
     _score = 0;
     livesLeft = 3;
+    margin = 2;
     
     [self schedule:@selector(ballsFallFaster) interval:5];
+    [self schedule:@selector(generateMoreOften) interval:5];
+
+    [self performSelector:@selector(makeButtonVisible) withObject:self afterDelay:35.0];
+
 }
 
 - (void)update:(CCTime)delta {
@@ -91,7 +102,7 @@
     if (timeSinceBall > randomTimeUntilNextBall) {
         [self generateTrash];
         timeSinceBall = 0;
-        randomTimeUntilNextBall = clampf((CCRANDOM_0_1() * 2),1,2);
+        randomTimeUntilNextBall = clampf((CCRANDOM_0_1() * margin),1,margin);
     }
 }
 
@@ -100,37 +111,66 @@
     velocityThreshold += 10;
 }
 
+-(void)generateMoreOften {
+    margin -= .3;
+}
+
 -(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair redball:(CCNode *)nodeA redbin:(CCNode *)nodeB {
     nodeA.visible=NO;
     nodeA.physicsBody.collisionMask=@[];
-    //TODO: addpoints
-    
+
+    [self addPoints];
     return NO;
 }
 
 -(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair blueball:(CCNode *)nodeA bluebin:(CCNode *)nodeB {
     nodeA.visible=NO;
     nodeA.physicsBody.collisionMask=@[];
-    //TODO: addpoints
-    
+    [self addPoints];
     return NO;
 }
 
 -(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair redball:(CCNode *)nodeA bluebin:(CCNode *)nodeB {
     nodeA.visible=NO;
     nodeA.physicsBody.collisionMask=@[];
-    //TODO: remove points
-    
+    [self removePoints];
     return NO;
 }
 
 -(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair blueball:(CCNode *)nodeA redbin:(CCNode *)nodeB {
     nodeA.visible=NO;
     nodeA.physicsBody.collisionMask=@[];
-    //TODO: remove points
+    [self removePoints];
     
     return NO;
 }
+
+-(void)addPoints {
+    _score += 1;
+    NSString *scoreString = [NSString stringWithFormat:@"%d", _score];
+    _scoreLabel.string = scoreString;
+}
+
+-(void)removePoints {
+    _score -= 1;
+    NSString *scoreString = [NSString stringWithFormat:@"%d", _score];
+    _scoreLabel.string = scoreString;
+}
+
+-(void)makeButtonVisible {
+    _youLost.visible = YES;
+    _gameOver.visible = YES;
+}
+
+
+
+-(void)gameOver {
+    GameOver *gameover = (GameOver*)[CCBReader load:@"GameOver"];
+    CCScene *gameoverScene = [CCScene node];
+    [gameoverScene addChild:gameover];
+    [[CCDirector sharedDirector] replaceScene:gameoverScene];
+}
+
 
 
 @end
