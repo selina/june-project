@@ -24,6 +24,7 @@
     float timeSinceBall;
     float randomTimeUntilNextBall;
     int score;
+    int velocityThreshold;
 }
 
 -(void)didLoadFromCCB {
@@ -45,7 +46,10 @@
     [[[CCDirector sharedDirector] view] addGestureRecognizer:swiperight];
     [[[CCDirector sharedDirector] view] addGestureRecognizer:swipeleft];
     
+    [self schedule:@selector(ballsFallFaster) interval:5];
+    
     score = 0;
+    velocityThreshold = 20;
 }
 
 - (void)update:(CCTime)delta {
@@ -73,7 +77,7 @@
     
     whiteballinstance.physicsBody.collisionType = @"whiteball";
     
-    int randomvelocity = arc4random_uniform(60);
+    int randomvelocity = arc4random_uniform(60) + velocityThreshold;
     int negativevelocity = -1 * randomvelocity;
     whiteballinstance.physicsBody.velocity = ccp(0, negativevelocity);
     whiteballinstance.physicsBody.density = 10.00;
@@ -94,6 +98,11 @@
         randomTimeUntilNextBall = clampf((CCRANDOM_0_1() * 2),1,2);
     }
 }
+
+-(void)ballsFallFaster {
+    velocityThreshold += 10;
+}
+
 
 
 -(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair whiteball:(CCNode *)nodeA floor:(CCNode *)nodeB {

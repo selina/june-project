@@ -131,8 +131,8 @@
     _leftside.physicsBody.collisionMask = @[];
     _bottom.physicsBody.collisionMask = @[];
     _top.physicsBody.collisionMask = @[];
-    
-    [_bigBall.physicsBody applyImpulse:ccp(-50000,0)];
+    [_bigBall.physicsBody applyImpulse:ccp(-1000,0)];
+    [self performSelector:@selector(gameOver) withObject:self afterDelay:2.0];
 }
 
 
@@ -159,6 +159,7 @@
     _gameOver.visible = true;
     _continueButton.visible = true;
     _replayButton.visible = true;
+    self.paused = true;
 }
 
 -(void)replay {

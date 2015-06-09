@@ -153,8 +153,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -1305,7 +1303,7 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>the fact that you can't</string>
+							<string>the fact that you can't.</string>
 							<false/>
 						</array>
 					</dict>
@@ -1444,7 +1442,7 @@
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string></string>
+		<string>GameOver</string>
 		<key>displayName</key>
 		<string>CCNode</string>
 		<key>memberVarAssignmentName</key>
@@ -1513,6 +1511,8 @@
 				</array>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
