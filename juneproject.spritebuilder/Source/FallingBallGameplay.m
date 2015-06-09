@@ -15,8 +15,15 @@
     CCNode *_player;
     CCNode *_contentNode;
     CCNode *_floor;
+    
+    CCButton *_button;
+    CCLabelTTF *_gameOver;
+    CCLabelTTF *_dead2;
+    CCLabelTTF *_scoreLabel;
+    
     float timeSinceBall;
     float randomTimeUntilNextBall;
+    int score;
 }
 
 -(void)didLoadFromCCB {
@@ -37,7 +44,8 @@
     
     [[[CCDirector sharedDirector] view] addGestureRecognizer:swiperight];
     [[[CCDirector sharedDirector] view] addGestureRecognizer:swipeleft];
-
+    
+    score = 0;
 }
 
 - (void)update:(CCTime)delta {
@@ -91,6 +99,11 @@
 -(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair whiteball:(CCNode *)nodeA floor:(CCNode *)nodeB {
     nodeA.visible=NO;
     nodeA.physicsBody.collisionMask=@[];
+    score++;
+    NSString *scoreString = [NSString stringWithFormat:@"%d", score];
+    _scoreLabel.string = scoreString;
+
+    
     return NO;
 }
 
@@ -100,20 +113,25 @@
 }
 
 -(void)swipeRight {
-    CGPoint impulse = ccp(400.f, 0.f);
+    CGPoint impulse = ccp(500.f, 0.f);
     [_player.physicsBody applyImpulse:impulse];
 }
 
 -(void)swipeLeft {
-    CGPoint impulse = ccp(-400.f, 0.f);
+    CGPoint impulse = ccp(-500.f, 0.f);
     [_player.physicsBody applyImpulse:impulse];
 }
 
-
-
-
 -(void)gameOver {
-    
+    _button.visible = true;
+    _gameOver.visible = true;
+    _dead2.visible = true;
+    self.paused = true;
+}
+
+-(void)nextGame {
+    CCScene *nextScene = [CCBReader loadAsScene:@"FlickOffScreen"];
+    [[CCDirector sharedDirector] pushScene:nextScene];
 }
 
 
