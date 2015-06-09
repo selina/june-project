@@ -11,7 +11,7 @@
 @implementation MainScene
 
 -(void)play {
-    CCScene *mainScene = [CCBReader loadAsScene:@"FallingBallGameplay"];
+    CCScene *mainScene = [CCBReader loadAsScene:@"SortGameplay"];
     [[CCDirector sharedDirector] replaceScene:mainScene];
 }
 
