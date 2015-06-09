@@ -66,5 +66,11 @@
 
 }
 
+-(void)continue {
+    
+        CCScene *nextScene = [CCBReader loadAsScene:@"SortGameplay"];
+        [[CCDirector sharedDirector] pushScene:nextScene];
+}
+
 
 @end

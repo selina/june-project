@@ -10,4 +10,10 @@
 
 @implementation GameOver
 
+-(void)playAgain {
+    CCScene *mainScene = [CCBReader loadAsScene:@"FallingBallGameplay"];
+    [[CCDirector sharedDirector] replaceScene:mainScene];
+}
+
+
 @end

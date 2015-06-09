@@ -11,7 +11,7 @@
 @implementation MainScene
 
 -(void)play {
-    CCScene *mainScene = [CCBReader loadAsScene:@"SortGameplay"];
+    CCScene *mainScene = [CCBReader loadAsScene:@"FlickOffScreen"];
     [[CCDirector sharedDirector] replaceScene:mainScene];
 }
 

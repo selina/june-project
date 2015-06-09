@@ -17,14 +17,30 @@
     float randomTimeUntilNextBall;
     int maxBalls;
     int currentBalls;
+    int randomBigBall;
+    
+    CCLabelTTF *_scoreLabel;
+    CCButton *_continueButton;
+    CCLabelTTF *_gameOver;
+    CCButton *_replayButton;
+    
+    CCNode *_rightside;
+    CCNode *_leftside;
+    CCNode *_top;
+    CCNode *_bottom;
+    
+    CCNode *_bigBall;
 }
 
 -(void)didLoadFromCCB {
     self.userInteractionEnabled = true;
     randomTimeUntilNextBall = 0.2;
-    maxBalls = 60;
+    maxBalls = 30;
     currentBalls = 0;
     _physicsNode.collisionDelegate = self;
+    //_physicsNode.debugDraw = true;
+    srandom(time(NULL));
+    randomBigBall = arc4random_uniform(30) + 1;
 }
 
 - (void)update:(CCTime)delta {
@@ -42,6 +58,10 @@
     if (currentBalls > maxBalls) {
         [self gameOver];
     }
+    else if (currentBalls == randomBigBall) {
+        [self bringInTheGuns];
+    }
+    else {
     srandom(time(NULL));
     
     float contentNodeWidth = _contentNode.contentSize.width;
@@ -89,7 +109,7 @@
     CCNode *ballinstance = (CCNode*)[CCBReader load:@"redball"];
     ballinstance.positionType = CCPositionTypeNormalized;
     ballinstance.position = ballLocation;
-    
+    ballinstance.physicsBody.collisionType = @"redball"; 
     [_physicsNode addChild:ballinstance];
     
     CGFloat xImp = -1*(x-50.0)*5;
@@ -99,7 +119,20 @@
     ballinstance.physicsBody.density = 10.00;
     
     currentBalls += 1;
+    NSString *scoreString = [NSString stringWithFormat:@"%d", currentBalls];
+    _scoreLabel.string = scoreString;
+
+    }
     
+}
+
+-(void)bringInTheGuns {
+    _rightside.physicsBody.collisionMask = @[];
+    _leftside.physicsBody.collisionMask = @[];
+    _bottom.physicsBody.collisionMask = @[];
+    _top.physicsBody.collisionMask = @[];
+    
+    [_bigBall.physicsBody applyImpulse:ccp(-50000,0)];
 }
 
 
@@ -113,15 +146,30 @@
     if (timeSinceBall > randomTimeUntilNextBall) {
         [self generateBall];
         timeSinceBall = 0;
-        randomTimeUntilNextBall = clampf((CCRANDOM_0_1() * 2),1,2);
+        randomTimeUntilNextBall = clampf((CCRANDOM_0_1() * 2),.2,1.2);
     }
 }
 
--(void)gameOver {
-    
+-(BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair meursault:(CCNode *)nodeA redball:(CCNode *)nodeB {
+    [self gameOver];
+    return NO;
 }
 
+-(void)gameOver {
+    _gameOver.visible = true;
+    _continueButton.visible = true;
+    _replayButton.visible = true;
+}
 
+-(void)replay {
+    CCScene *nextScene = [CCBReader loadAsScene:@"FlickOffScreen"];
+    [[CCDirector sharedDirector] pushScene:nextScene];
+}
+
+-(void)nextGame {
+    CCScene *nextScene = [CCBReader loadAsScene:@"TapTheButton"];
+    [[CCDirector sharedDirector] pushScene:nextScene];
+}
 
 
 

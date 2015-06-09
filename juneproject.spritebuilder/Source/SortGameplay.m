@@ -162,8 +162,6 @@
     _gameOver.visible = YES;
 }
 
-
-
 -(void)gameOver {
     GameOver *gameover = (GameOver*)[CCBReader load:@"GameOver"];
     CCScene *gameoverScene = [CCScene node];
