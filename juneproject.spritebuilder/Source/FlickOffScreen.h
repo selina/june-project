@@ -8,6 +8,7 @@
 
 #import "CCNode.h"
 
-@interface FlickOffScreen : CCNode
+@interface FlickOffScreen : CCNode  <CCPhysicsCollisionDelegate>
+
 
 @end

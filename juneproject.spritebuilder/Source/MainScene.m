@@ -11,7 +11,7 @@
 @implementation MainScene
 
 -(void)play {
-    CCScene *mainScene = [CCBReader loadAsScene:@"FlickOffScreen"];
+    CCScene *mainScene = [CCBReader loadAsScene:@"FallingBallGameplay"];
     [[CCDirector sharedDirector] replaceScene:mainScene];
 }
 

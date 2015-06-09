@@ -15,11 +15,16 @@
     CCNode *_contentNode;
     float timeSinceBall;
     float randomTimeUntilNextBall;
+    int maxBalls;
+    int currentBalls;
 }
 
 -(void)didLoadFromCCB {
     self.userInteractionEnabled = true;
     randomTimeUntilNextBall = 0.2;
+    maxBalls = 60;
+    currentBalls = 0;
+    _physicsNode.collisionDelegate = self;
 }
 
 - (void)update:(CCTime)delta {
@@ -33,6 +38,10 @@
 }
 
 -(void)generateBall {
+    
+    if (currentBalls > maxBalls) {
+        [self gameOver];
+    }
     srandom(time(NULL));
     
     float contentNodeWidth = _contentNode.contentSize.width;
@@ -83,17 +92,19 @@
     
     [_physicsNode addChild:ballinstance];
     
-    CGFloat xImp = -1*(x-50.0);
-    CGFloat yImp = -1*(y-50.0);
+    CGFloat xImp = -1*(x-50.0)*5;
+    CGFloat yImp = -1*(y-50.0)*5;
     
     [ballinstance.physicsBody applyImpulse:ccp(xImp, yImp)];
     ballinstance.physicsBody.density = 10.00;
+    
+    currentBalls += 1;
     
 }
 
 
 -(void)generateNewBalls:(CCTime)delta {
-    //after random amount of time less than two seconds: generate new ball
+    //after random amount of time less than one second: generate new ball
     
     srandom(time(NULL));
     
@@ -102,8 +113,12 @@
     if (timeSinceBall > randomTimeUntilNextBall) {
         [self generateBall];
         timeSinceBall = 0;
-        randomTimeUntilNextBall = clampf((CCRANDOM_0_1() * 3),1,3);
+        randomTimeUntilNextBall = clampf((CCRANDOM_0_1() * 2),1,2);
     }
+}
+
+-(void)gameOver {
+    
 }
 
 
